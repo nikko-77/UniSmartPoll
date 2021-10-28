@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="css/smartpoll.css" rel="stylesheet">
+	<title>SmartPoll - Iniciar Sesión</title>
+	<style>
+		#FormContainer { margin: auto; width:16rem; }
+		/* #FormLogin { padding:1rem;width:40%; } */
+		#FormLogin > input,button { padding:0.5rem;margin:auto;width:100%; }
+		#LoginFooter { padding:0.25rem;font-size:0.7rem;color:#7f7f7f }
+	</style>
+</head>
+<body>
+	<h1 align="center">SmartPoll</h1>
+	<div id="FormContainer" class="Card" align="center">
+		<h2>Iniciar Sesión</h2>
+		<div id="FormLogin">
+			<input id="txt_nombre_usuario" type="text" placeholder="Nombre de Usuario"><br><br>
+			<input id="txt_contraseña" type="password" placeholder="Contraseña"><br><br>
+			<button id="btn_login">Iniciar Sesión</button>
+		</div>
+		<label id="LoginFooter">¿No tienes una cuenta? ¡<a href="/registro">Registrate</a>!</label>
+	</div>
+	<%- include('includes/jquery.ejs') %>
+	<script type="module" src="js/login.js"></script>
+</body>
+</html>

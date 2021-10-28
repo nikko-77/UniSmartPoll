@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css/smartpoll.css" rel="stylesheet">
+	<title>SmartPoll - Menú Principal</title>
+	<style>
+		#btn_cerrar_sesion { padding:0.5rem; }
+		input[type=text] { padding:0.5rem; width:100%; margin:auto  }
+		.PollFrame { border:0.1rem black solid; padding: 0.1rem }
+		#tabla_opciones { width:100%; margin:auto }
+		/* #tabla_opciones td { width:auto; margin:auto } */
+	</style>
+</head>
+<body>
+	<%- include('./smartpoll/heading.ejs') %>
+	<br><br>
+	<div align="center">
+		<div style="display: inline-block">
+			<div class="PollFeed">
+				<div class="PollCard">
+					<a style="float: left; margin: auto;" href="/comunidad?id=<%-datos_comunidad.id%>">&lt;&lt; Atrás</a>
+				</div>
+				<div class="PollCard" align="left">
+					<!-- <h3 style="float: left; margin:auto;">Responder Poll | <%-datos_comunidad.nombre%></h3>
+					<br><br> -->
+					<p><i><%-datos_comunidad.nombre%></i></p>
+					<h3><%-poll.titulo%></h3>
+					<table id="tabla_opciones">
+						<% for( const i in opciones ) { const opcion = opciones[i]; %>
+							<tr>
+								<td colspan="3"><b><%- opcion.opcion %></b></td>
+							</tr>
+							<tr>
+								<td>
+									<div class="PollFrame">
+										<div style="height:0.5rem;width:<%-opcion.percentage%>%;background-color: black"></div>
+									</div>
+								</td>
+								<td style="padding-left:1rem;width:0%"><%-opcion.percentage%>%</td>
+								<td style="width:4rem">| <%-opcion.count%></td>
+							</tr>
+						<% } %>
+					</table>
+					<br><hr><br>
+					<button id="btn_volver_poll" style="width:100%;padding:0.5rem" onclick="window.location.href='/poll?id=<%- poll.id %>'">Volver a la Poll</button>
+				</div>
+			</div>
+			<div class="RightSideCard">
+				<h3><%- datos_comunidad.nombre %> | Comunidad</h3>
+				<p><b>Usuarios: <%-comunidad_usuarios.length%></b></p>
+				<ul style="list-style-type: none; padding:0rem">
+					<% for (const i in comunidad_usuarios) { const usuario = comunidad_usuarios[i]; %>
+						<li style="font-style: italic;"><%-usuario.nombre_usuario%></li>
+					<% } %>
+				</ul>
+				<hr>
+				<h3>Usuario - <%- datos_usuario.nombre_usuario %></h3>
+				<p><%- datos_usuario.nombres %> <%- datos_usuario.apellidos %> </p>
+				<h3>Comunidades</h3>
+				<ul style="list-style-type: none; padding:0rem">
+					<% for (const i in usuario_comunidades) { const comunidad = usuario_comunidades[i]; %>
+						<li><a href="/comunidad?id=<%-comunidad.id%>"><%-comunidad.nombre%></a></li>
+					<% } %>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!-- <button id="btn_cerrar_sesion">Cerrar Sesion</button> -->
+	
+	<%- include("./includes/jquery.ejs") %>
+	<script>
+		const id_usuario = "<%-datos_usuario.id_usuario%>";
+		const id_comunidad = "<%-datos_comunidad.id%>";
+	</script>
+	<script type="module" src="/js/resultadosPoll.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="css/smartpoll.css" rel="stylesheet">
+	<title>SmartPoll - Registrar Usuario</title>
+	<style>
+		#FormContainer { margin: auto; width:30%; }
+		/* #FormLogin { padding:1rem;width:40%; } */
+		#FormRegistro > input,button { padding:0.5rem;margin:auto;width:100%; }
+		#RegistrarFooter { padding:0.25rem;font-size:0.7rem;color:#7f7f7f }
+	</style>
+</head>
+<body>
+	<h1 align="center">SmartPoll</h1>
+	<div id="FormContainer" class="Card" align="center">
+		<h2>Registrar Usuario</h2><hr><br>
+		<div id="FormRegistro">
+			<input id="txt_nombres" type="text" placeholder="Nombres"><br><br>
+			<input id="txt_apellidos" type="text" placeholder="Apellidos"><br><br>
+			<input id="txt_nombre_usuario" type="text" placeholder="Nombre de Usuario"><br><br>
+			<input id="txt_contraseña" type="password" placeholder="Contraseña"><br><br>
+			<hr><label id="RegistrarFooter">Al registrarte aceptas nuestra <a href>Política de Privacidad</a> y nuestros <a href>Terminos y Condiciones</a>.</label><br><br>
+			<button id="btn_registrar">Registrarse</button>
+		</div>
+	</div>
+	<%- include('includes/jquery.ejs') %>
+	<script type="module" src="js/registro.js"></script>
+</body>
+</html>

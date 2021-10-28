@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css/smartpoll.css" rel="stylesheet">
+	<title>SmartPoll - Menú Principal</title>
+	<style>
+		#btn_cerrar_sesion { padding:0.5rem; }
+		input[type=text] { padding:0.5rem; width:100%; margin:auto  }
+		#tabla_opciones { width:100%; margin:auto }
+	</style>
+</head>
+<body>
+	<%- include('./smartpoll/heading.ejs') %>
+	<br><br>
+	<div align="center">
+		<div style="display: inline-block">
+			<div class="PollFeed">
+				<div class="PollCard">
+					<a style="float: left; margin:auto;" href="/principal">&lt;&lt; Atrás</a>
+				</div>
+				<div class="PollCard" align="left">
+					<h3 style="float: left; margin:auto;">Crear Comunidad</h3>
+					<br><br><hr><br>
+					<form action="/comunidad/crear">
+						<input id="id_usuario" name="id_usuario" type="hidden" value="<%- datos_usuario.id_usuario %>">
+						<input id="nombre" name="nombre" type="text" placeholder="Nombre"><br><br>
+						<input id="descripcion" name="descripcion" type="text" placeholder="Descripción"><br><br>
+						<button id="btn_crear_comunidad" style="width:100%;padding:0.5rem">Crear</button>
+					</form>
+				</div>
+			</div>
+			<div class="RightSideCard">
+				<h3>Usuario - <%- datos_usuario.nombre_usuario %></h3>
+				<p><%- datos_usuario.nombres %> <%- datos_usuario.apellidos %> </p>
+				<h3>Comunidades</h3>
+				<ul style="list-style-type: none; padding:0rem">
+					<% for (const i in usuario_comunidades) { const comunidad = usuario_comunidades[i]; %>
+						<li><a href="/comunidad?id=<%-comunidad.id%>"><%-comunidad.nombre%></a></li>
+					<% } %>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!-- <button id="btn_cerrar_sesion">Cerrar Sesion</button> -->
+	
+	<%- include("./includes/jquery.ejs") %>
+	<!-- <script type="module" src="/js/crearpoll.js"></script> -->
+</body>
+</html>

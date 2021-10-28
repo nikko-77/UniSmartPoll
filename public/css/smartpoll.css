@@ -1,0 +1,32 @@
+body { font-family: 'Noto Sans' }
+.Card {
+	clear: both;
+	margin: 1rem;
+	padding: 2rem;
+	border-color: black;
+	border-style: solid;
+	box-shadow: 1rem 1rem #00000033;
+}
+.PollFeed {
+	float:left;
+}
+.PollCard {
+	float:left;
+	width: 100%;
+	height: auto;
+	clear: both;
+	margin: 1rem;
+	padding: 2rem;
+	border-color: black;
+	border-style: solid;
+	box-shadow: 1rem 1rem #00000033;
+}
+.RightSideCard {
+	float: right;
+	margin: 1rem;
+	margin-left: 8rem;
+	padding: 2rem;
+	border-color: black;
+	border-style: solid;
+	box-shadow: 1rem 1rem #00000033;
+}

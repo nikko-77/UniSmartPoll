@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="css/smartpoll.css" rel="stylesheet">
+	<title>SmartPoll - Menú Principal</title>
+	<style>
+		#btn_cerrar_sesion { padding:0.5rem; }
+	</style>
+</head>
+<body>
+	<%- include('smartpoll/heading.ejs') %>
+	<br><br>
+	<div align="center">
+		<div style="display: inline-block">
+			<div class="PollFeed">
+				<div class="PollCard">
+					<h3 style="float: left; margin:auto;">Tu Feed</h3>
+				</div>
+				<% if (feed_usuario.length == 0) { %>
+					<div class="PollCard">
+						<label style="margin:auto;color:#00000077"><b><i>¡Vaya! ¡Esto esta vacío!</i></b></label>
+					</div>
+				<% } else for( const poll_index in feed_usuario ) { const poll = feed_usuario[poll_index]; %>
+					<div class="PollCard">
+						<h3 style="float: left; margin:auto;"><a href="poll?id=<%-poll.id%>"><%- poll.titulo %></a></h3>
+						<p style="float: right; margin:auto;"><%- poll.fecha_creacion %></p><br>
+						<p style="clear:both; margin:auto; float: left;font-style: italic;"><%- poll.nombres %> <%- poll.apellidos %> | <a href="comunidad?id=<%-poll.id_comunidad%>"><%-poll.nombre%></a></p>
+					</div>
+				<% } %>
+			</div>
+			<div class="RightSideCard">
+				<h3>Usuario - <%- datos_usuario.nombre_usuario %></h3>
+				<p><%- datos_usuario.nombres %> <%- datos_usuario.apellidos %> </p>
+				<h3>Comunidades</h3>
+				<ul style="list-style-type: none; padding:0rem">
+					<% if (usuario_comunidades.length == 0) { %>
+						<li><i>Vaya, esto esta vacío, <a href="/buscarComunidades">unete a una comunidad</a></i></li>
+					<% } else for (const i in usuario_comunidades) { const comunidad = usuario_comunidades[i]; %>
+						<li><a href="comunidad?id=<%-comunidad.id%>"><%-comunidad.nombre%></a></li>
+					<% } %>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!-- <button id="btn_cerrar_sesion">Cerrar Sesion</button> -->
+	
+	<%- include("includes/jquery.ejs") %>
+	<script type="module" src="js/principal.js"></script>
+</body>
+</html>
