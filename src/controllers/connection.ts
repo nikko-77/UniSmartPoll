@@ -5,8 +5,8 @@ class Connection {
 	get() {
 		return mysql.createConnection( {
 			host: "localhost",
-			user: "nikko77",
-			password: "alberto",
+			user: "root",
+			password: "",
 			database: "smartpoll",
 		} );
 	}
